@@ -41,7 +41,7 @@ Page({
     this.setData({
       inputValue: value
     })
-    this.searchFromApi(this.data.pager.current, value)
+    this.searchFromApi(1, value)
 
   },
 
@@ -53,7 +53,7 @@ Page({
   },
 
   search() {
-    this.searchFromApi(this.data.pager.current, this.data.inputValue)
+    this.searchFromApi(1, this.data.inputValue)
   },
   searchFromApi(currentPage, searchValueKeyWord) {
     this.setData({
@@ -101,7 +101,7 @@ Page({
         } else if (code === 400) {
           wx.showToast({
             title: message,
-            icon: 'info',
+            icon: 'error',
             duration: 2000
           })
         }
@@ -110,7 +110,8 @@ Page({
         wx.hideLoading();
 
         wx.showToast({
-          title: '请求失败'
+          title: '请求失败',
+          icon: 'error'
         })
       }
     })
